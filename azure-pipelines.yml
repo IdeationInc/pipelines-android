@@ -34,18 +34,18 @@ steps:
     artifactType: 'container'
   displayName: Publish artifacts
 
-- task: AndroidSigning@3
-  inputs:
-    apkFiles: '**/*.apk'
-    apksign: false
+- #task: AndroidSigning@3
+  #inputs:
+    #apkFiles: '**/*.apk'
+    #apksign: false
 
 # App Center distribute
 # Distribute app builds to testers and users via Visual Studio App Center
-- task: AppCenterDistribute@1
-  inputs:
-    serverEndpoint: 
-    appSlug: 
-    appFile: 
+- #task: AppCenterDistribute@1
+  #inputs:
+    #serverEndpoint: 
+    #appSlug: 
+    #appFile: 
     #symbolsOption: 'Apple' # Optional. Options: apple
     #symbolsPath: # Optional
     #symbolsPdbFiles: '**/*.pdb' # Optional
