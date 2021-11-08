@@ -36,19 +36,18 @@ steps:
 # App Center distribute
 # Distribute app builds to testers and users via Visual Studio App Center
 
-- task: AppCenterDistribute@1
+- task: DownloadSecureFile@1
+  name: caCertificate
+  displayName: 'Download CA certificate'
   inputs:
-    serverEndpoint: 
-    appSlug: 
-    appFile: 
-    #symbolsOption: 'Apple' # Optional. Options: apple
-    #symbolsPath: # Optional
-    #symbolsPdbFiles: '**/*.pdb' # Optional
-    #symbolsDsymFiles: # Optional
-    #symbolsMappingTxtFile: # Optional
-    #symbolsIncludeParentDirectory: # Optional
-    #releaseNotesOption: 'input' # Options: input, file
-    #releaseNotesInput: # Required when releaseNotesOption == Input
-    #releaseNotesFile: # Required when releaseNotesOption == File
-    #isMandatory: false # Optional
-    #distributionGroupId: # Optional
+    secureFile: 'BIRM.keystore'
+
+- task: AndroidSigning@2
+  inputs:
+    apkFiles: '**/*.apk'
+    jarsign: true
+    jarsignerKeystoreFile: $(caCertificate.secureFilePath)
+    jarsignerKeystorePassword: $(keystorePassword)
+    jarsignerKeystoreAlias: 'birmMobile'
+    jarsignerKeyPassword: $(keystorePassword)
+    zipalign: true
