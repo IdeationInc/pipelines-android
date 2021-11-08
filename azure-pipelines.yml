@@ -41,3 +41,4 @@ steps:
     apkFiles: '**/*.apk'
     apksignerKeystoreFile: 'BIRM.keystore'
     apksignerKeystorePassword: '$(keystorePassword)'
+    apksignerKeystoreAlias: 'BIRMMobile'
