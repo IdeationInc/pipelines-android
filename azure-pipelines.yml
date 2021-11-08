@@ -43,9 +43,6 @@ steps:
     apksignerKeystorePassword: '$(keystorePassword)'
     keystoreAlias: 'BIRM'
 
-# Distribute the app
-- task: AppCenterDistribute@3
-  inputs:
 - task: AppCenterTest@1
   inputs:
     appFile: 'app/build/outputs/apk/app-mock-debug.apk'
